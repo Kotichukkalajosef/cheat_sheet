@@ -24,6 +24,7 @@
 *   **Domain Controller (DC) Check:** Look for **88/TCP (kerberos-sec)** and **389/TCP (LDAP)**. 
 *   **Vulnerability Research:** `nmap -Pn --script vuln <TIP> -T5`
 *   **Directory Bruting:** `dirb <targetDomain> -x eg.txt`
+*   gobuster dir -u http://<IP> -w /usr/share/wordlists/dirb/common.txt
 
 ---
 
