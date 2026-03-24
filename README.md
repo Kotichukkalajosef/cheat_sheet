@@ -136,6 +136,13 @@ searchsploit -m <exploit>
 
 
 ---
+(Port 23)
+* **Scan:** `nmap -p 23 --open <Subnet>`
+* **Sniffing (Wireshark):** Filter `telnet` -> Right-click -> `Follow TCP Stream`.
+* **Brute Force:** `hydra -L users.txt -P pass.txt <TIP> telnet -f`
+* **Banner Grab:** `nc -v <TIP> 23`
+* **Login:** `telnet <TIP>`
+---
 
 
 
