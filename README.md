@@ -103,6 +103,18 @@ hashcat -m <mode> hash.txt wordlist.txt
 
 ---
 
+* python3 /usr/share/john/ssh2john.py id_rsa
+* /usr/bin/smbclient -L //10.10.10.10
+* PATH=/usr/bin:$PATH enum4linux-ng -A 10.10.10.10
+* hydra -l user -P pass.txt ftp://10.10.10.10
+* hydra -l user -P pass.txt 10.10.10.10 ftp
+* PATH=/usr/bin:$PATH enum4linux-ng -A <IP>
+* /usr/bin/smbclient -L //<IP>
+*which toolname
+find / -name toolname 2>/dev/null
+
+---
+
 *   **.cap Files:** `aircrack-ng -w wordlist.txt capture.cap`
 *   **BSSID Filter:** `aircrack-ng -b <bssid> -w wifiPassList.txt handShakeCapture.cap`
 *   **Double-Encryption:** Decrypt with password first, then use hash crackers/online tools.
