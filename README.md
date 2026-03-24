@@ -3,27 +3,23 @@
 
 ---
 
-## 📂 1. File Sharing & Transfer (Windows ↔ Linux)
 > **Common for both:** `python3 -m http.server 8080`
 
-*   **Windows Download (Certutil):**  
+*   
     `Certutil.exe -Urlcache -f http://<ParrotIP>/eg.jpg C:\path\to\save\file\eg.jpg`
-*   **Linux Download (wget):**  
+*  
     `wget http://<Windows_IP>:8080/eg.jpg -O eg.jpg`
-*   **Netcat Listener (Reverse Shell):**  
+*   
     `nc -lnvp 1234` (Listens on port 1234 for incoming connections)
 
 ---
 
-## 🔍 2. Enumeration & File Discovery
-### Finding Files & Sorting
-*   **Visual Tree:** `tree` (Works on Windows & Linux)
-*   **Find all .txt:** `sudo find / -name *.txt`
+*   **Visual Tree:** `tree`
+*   **Find all .txt:** `sudo find / -name *.txt` 
 *   **Search current path:** `sudo find . -name SpecificFileName.txt`
-*   **Sort & Unique Passwords:**  
+*   
     `sort filename.txt | uniq > newfile.txt` (Removes duplicates from a wordlist)
 
-### Infrastructure & Server ID
 *   **Identify Servers:** `nmap -A -oN scans`
 *   **Domain Controller (DC) Check:** Look for **88/TCP (kerberos-sec)** and **389/TCP (LDAP)**. 
 *   **Vulnerability Research:** `nmap -Pn --script vuln <TIP> -T5`
@@ -31,11 +27,10 @@
 
 ---
 
-## 📱 3. Mobile & IoT Security
 *   **Connect:** `adb connect <TIP>:5555`
 *   **Data Extraction:** `adb pull sdcard/`
 *   **PhoneSploit:** `python3 phonesploitpro.py` (Interactive: **N**=Next, **P**=Previous)
-*   **IoT Analysis:** Use `mqtt` filter in Wireshark for published messages.
+*   **IoT Analysis:** `mqtt` 
 
 ---
 
