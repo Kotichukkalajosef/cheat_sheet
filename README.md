@@ -81,6 +81,8 @@
 
 ## 🔑 7. Remote Access & Privilege Escalation
 ### SMB & Remote Login
+*   **HTTP POST Form:**  
+    `hydra -l admin -P pass.txt <IP> http-post-form "/login.php:username=^USER^&password=^PASS^:F=invalid"`
 *   **Check Shares:** `smbmap -H <TIP>` or `smbclient -L <TIP>`
 *   **Brute Force:** `hydra -L users.txt -P pass.txt <TIP> smb -f`
 *   **RDP Login:** `xfreerdp /v:<TIP> /u:username` or **Remmina**.
