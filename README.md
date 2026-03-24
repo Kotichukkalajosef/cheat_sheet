@@ -72,7 +72,7 @@
 *   **DDoS Detection:** `Statistics` -> `Conversations` (Check for high volume no-reply).
 *  plaintext Passwords,"http.request.method == ""POST"" or tcp contains ""password"""
 *  FTP Logins,"`ftp.request.command == ""USER"""
-* Telnet Traffic,telnet (Great for finding cleartext commands/passwords)
+* Telnet Traffic,telnet 
 * DNS Tunneling,dns && udp.port == 53
 * Suspicious User-Agents,"http.user_agent contains ""sqlmap"" or http.user_agent contains ""nmap"""
 
