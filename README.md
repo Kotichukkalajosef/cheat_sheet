@@ -1,5 +1,4 @@
- CHEAT SHEET
-
+Golden Cheat Sheet
 ---
 
 
