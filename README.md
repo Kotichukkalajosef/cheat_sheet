@@ -14,7 +14,7 @@
 
 ---
 
-*   **Visual Tree:** `tree`
+*   **Visual Tree:** `tree` or  tree | grep .bmp
 *   **Find all .txt:** `sudo find / -name *.txt` 
 *   **Search current path:** `sudo find . -name SpecificFileName.txt`
 *   
