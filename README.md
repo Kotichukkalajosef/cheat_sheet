@@ -64,6 +64,12 @@
 *   **Steganography:** `OpenStego`, `steghide` (Use `steghide extract -sf image.jpg`).
 *   certutil -hashfile filename.txt MD5
 
+* **Check Info:** `steghide info file.jpg` (Try blank password first)
+* **Standard Extract:** `steghide extract -sf file.jpg`
+* **High-Speed Brute Force:** `stegseek file.jpg /usr/share/wordlists/rockyou.txt`
+* *Output:* Saved as `file.jpg.out` by default.
+* **White-Space Stego:** `snow -C -p "pass" output.txt` (Extracts from text files)
+
 ---
 
 *   **Filter SYN (No ACK):** `tcp.flags.syn == 1 && tcp.flags.ack == 0`
