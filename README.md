@@ -34,20 +34,15 @@
 
 ---
 
-## 🕸️ 4. Web & SQL Injection
-### SQLmap Workflow
-1.  **Auth Setup:** View Profile > `document.cookie` in console.
-2.  **List DBs:** `sqlmap -u <url> --cookie "<value>" --dbs`
-3.  **Dump Data:** `sqlmap -u <url> --cookie "<value>" -D dbName -T Users_Login --dump`
+  **List DBs:** `sqlmap -u <url> --cookie "<value>" --dbs`
+  **Dump Data:** `sqlmap -u <url> --cookie "<value>" -D dbName -T Users_Login --dump`
 
-### WordPress (WPScan)
+
 *   **Scan URL:** `wpscan -url <domain or ip>`
 *   **Brute Force:** `wpscan -url <domain> -U user -P pass.txt -e u`
 
 ---
 
-## ☣️ 5. Malware Analysis & Forensics
-### Static & Binary Analysis
 *   **file:** `file <filename>` (Identify file type/architecture)
 *   **strings:** `strings <filename>` (Extract readable text/hardcoded passwords)
 *   **binwalk:** `binwalk -e <filename>` (Search and extract hidden files/firmware)
@@ -59,14 +54,12 @@
     *   **DIE (Detect It Easy)** for Windows.
     *   **ent <file>** for Linux (Calculates randomness/entropy).
 
-### Hashing & Crypto
 *   **Hash Multiple Files:** `HashMyFiles.exe` (Windows) or `sha256sum <file>` (Linux).
 *   **Base64:** `echo "aGVsbG8=" | base64 --decode`
 *   **Steganography:** `OpenStego`, `steghide` (Use `steghide extract -sf image.jpg`).
 
 ---
 
-## 🦈 6. Wireshark & Traffic Analysis
 *   **Filter SYN (No ACK):** `tcp.flags.syn == 1 && tcp.flags.ack == 0`
 *   **Filter Content:** `frame contains "string"`
 *   **Expert Info:** `Analyze` -> `Expert Info`
@@ -74,7 +67,6 @@
 
 ---
 
-## 🔑 7. Remote Access & Privilege Escalation
 ### SMB & Remote Login
 *   **HTTP POST Form:**  
     `hydra -l admin -P pass.txt <IP> http-post-form "/login.php:username=^USER^&password=^PASS^:F=invalid"`
@@ -82,7 +74,6 @@
 *   **Brute Force:** `hydra -L users.txt -P pass.txt <TIP> smb -f`
 *   **RDP Login:** `xfreerdp /v:<TIP> /u:username` or **Remmina**.
 
-### Privilege Escalation (CEH Focus)
 *   **Linux (Sudo):** `sudo -l` (List allowed commands). Check [GTFOBins](https://gtfobins.github.io/).
 *   **Linux (SUID):** `find / -perm -u=s -type f 2>/dev/null` (Find files with root permissions).
 *   **Windows (System Info):** `systeminfo | findstr /B /C:"OS Name" /C:"OS Version"`
@@ -91,7 +82,6 @@
 
 ---
 
-## 🔓 8. Password & Hash Cracking
 *   **.cap Files:** `aircrack-ng -w wordlist.txt capture.cap`
 *   **BSSID Filter:** `aircrack-ng -b <bssid> -w wifiPassList.txt handShakeCapture.cap`
 *   **Double-Encryption:** Decrypt with password first, then use hash crackers/online tools.
