@@ -125,6 +125,13 @@ Golden Cheat Sheet
 
 ---
 
+* **Check File Identity:** `file pixelpioneer.txt`
+* **Base64 Decode:** `base64 -d pixelpioneer.txt > decoded.txt`
+* **OpenSSL Decrypt:** `openssl enc -d -aes-256-cbc -in file.txt -out out.txt` (Use provided key)
+* **Keyword Search:** `strings file.txt | grep -E "[A-Z][0-9][a-z]{2}"` (Search for patterns)
+  
+---
+
 | Protocol | Recommended Audit Tool |
 | :--- | :--- |
 | **FTP** | `ftp` / `hydra` |
