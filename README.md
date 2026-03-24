@@ -10,7 +10,7 @@
 *  
     `wget http://<Windows_IP>:8080/eg.jpg -O eg.jpg`
 *   
-    `nc -lnvp 1234` (Listens on port 1234 for incoming connections)
+    `nc -lnvp 1234` 
 
 ---
 
@@ -76,6 +76,10 @@
 *   **Check Shares:** `smbmap -H <TIP>` or `smbclient -L <TIP>`
 *   **Brute Force:** `hydra -L users.txt -P pass.txt <TIP> smb -f`
 *   **RDP Login:** `xfreerdp /v:<TIP> /u:username` or **Remmina**.
+*   john hash.txt
+john --show hash.txt
+
+hashcat -m <mode> hash.txt wordlist.txt
 
 *   **Linux (Sudo):** `sudo -l` (List allowed commands). Check [GTFOBins](https://gtfobins.github.io/).
 *   **Linux (SUID):** `find / -perm -u=s -type f 2>/dev/null` (Find files with root permissions).
@@ -88,5 +92,14 @@
 *   **.cap Files:** `aircrack-ng -w wordlist.txt capture.cap`
 *   **BSSID Filter:** `aircrack-ng -b <bssid> -w wifiPassList.txt handShakeCapture.cap`
 *   **Double-Encryption:** Decrypt with password first, then use hash crackers/online tools.
+*   searchsploit <service/version>
+searchsploit -m <exploit>
+
+
+
+- `echo "aGVsbG8=" | base64 --d`
+- `base64 -d Sniff.txt > secret.txt`
+`cat secret.txt`
+
 
 ---
