@@ -1,5 +1,5 @@
 
-# CEH Practical – Golden Cheat Sheet
+# CEH  – Cheat Sheet
 
 ---
 
@@ -33,6 +33,9 @@ sudo find /DirectoryName -name SpecificFileName.txt
 sudo find . -name SpecificFileName.txt
 
 ---
+
+To Sort = sort file.txt | uniq > new_file.txt 
+nc -lnvp 1234
 
 # Final Look (Quick Notes)
 
@@ -162,6 +165,8 @@ Entropy tools
 DIE
 ent
 
+
+
 ---
 
 ## Wireshark Analysis
@@ -218,6 +223,16 @@ Cross check tools
 
 DIE
 PEiD
+
+
+readpe filename
+objdump -x filename
+
+binwalk filename
+exiftool filename
+ent
+strings
+file
 
 ---
 
