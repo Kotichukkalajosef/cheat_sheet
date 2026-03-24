@@ -130,9 +130,19 @@ searchsploit -m <exploit>
 
 
 
-- `echo "aGVsbG8=" | base64 --d`
+- `echo "aGVsbG8=" | base64 -d`
 - `base64 -d Sniff.txt > secret.txt`
 `cat secret.txt`
 
 
 ---
+
+
+
+FTP → ftp / hydra
+SMB → smbclient / enum
+HTTP → dirb / sqlmap
+.cap → aircrack-ng
+.pcap → Wireshark
+hash → john / hashcat
+image → stego tools
