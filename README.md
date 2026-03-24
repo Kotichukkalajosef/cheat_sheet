@@ -96,6 +96,13 @@ hashcat -m <mode> hash.txt wordlist.txt
 
 ---
 
+* **Docker Detection:** `ls /.dockerenv` If this file exists, you are inside a container.
+* **Docker Info:** `docker ps` this will List running containers | `docker images`this will List images.
+* **Kubernetes Check:** `kubectl get pods` | `kubectl describe pod <pod_name>`.
+* **S3 Bucket Recon:** `aws s3 ls s3://<bucket_name> --no-sign-request` (Check for public access).
+
+---
+
 *   **.cap Files:** `aircrack-ng -w wordlist.txt capture.cap`
 *   **BSSID Filter:** `aircrack-ng -b <bssid> -w wifiPassList.txt handShakeCapture.cap`
 *   **Double-Encryption:** Decrypt with password first, then use hash crackers/online tools.
