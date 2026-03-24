@@ -62,6 +62,7 @@
 *   **Hash Multiple Files:** `HashMyFiles.exe` (Windows) or `sha256sum <file>` (Linux).
 *   **Base64:** `echo "aGVsbG8=" | base64 --decode`
 *   **Steganography:** `OpenStego`, `steghide` (Use `steghide extract -sf image.jpg`).
+*   certutil -hashfile filename.txt MD5
 
 ---
 
