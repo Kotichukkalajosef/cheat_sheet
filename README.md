@@ -95,6 +95,11 @@ Golden Cheat Sheet
 * **Windows Privs:** `whoami /priv` (Check for `SeImpersonatePrivilege`)
 * **Kernel Suggesters:** `linux-exploit-suggester.sh` | `windows-exploit-suggester.py`
 
+* **Brute Force Community String:** `onesixtyone -c /usr/share/wordlists/metasploit/snmp_default_pass.txt <TIP>`
+* **Full SNMP Walk:** `snmpwalk -v 2c -c <String> <TIP>`
+* **Structured Audit:** `snmp-check -t <TIP> -c <String>`
+* **Nmap Script Audit:** `nmap -sU -p 161 --script snmp-enum <TIP>`
+
 ---
 
 * **Container Detection:** `ls /.dockerenv` (Confirmed if file exists)
