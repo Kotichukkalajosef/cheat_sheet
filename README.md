@@ -1,6 +1,5 @@
-# 🛡️ Cybersecurity Golden Cheat Sheet (Master Copy)
+# CEHCheat Sheet
 
-A complete reference for Penetration Testing, Malware Analysis, and Network Forensics.
 
 ---
 
@@ -129,4 +128,3 @@ A complete reference for Penetration Testing, Malware Analysis, and Network Fore
 *   **Find BSSID:** `aircrack-ng <filename>.cap`
 
 ---
-> **Note:** For educational and authorized testing only.
