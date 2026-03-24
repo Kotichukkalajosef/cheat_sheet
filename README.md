@@ -66,6 +66,7 @@
 ---
 
 *   **Filter SYN (No ACK):** `tcp.flags.syn == 1 && tcp.flags.ack == 0`
+*   ip.dst == <ipaddress>
 *   **Filter Content:** `frame contains "string"`
 *   **Expert Info:** `Analyze` -> `Expert Info`
 *   **DDoS Detection:** `Statistics` -> `Conversations` (Check for high volume no-reply).
